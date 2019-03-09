@@ -3,12 +3,12 @@ steps:
   build_image:
     type: build
     title: Build codefresh-go
-    image-name: guangie88/codefresh-go
+    image-name: ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
     tag: test
     target: test
   perform_tests:
     title: Perform unit tests
-    image: guangie88/codefresh-go:test
+    image: ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}:test
     working_directory: ${{main_clone}}
     commands:
     - go test -v ./...
