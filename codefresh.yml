@@ -3,10 +3,11 @@ steps:
   build_image:
     type: build
     title: Build codefresh-go
-    image-name: guangie88/codefresh-go:test
+    image-name: guangie88/codefresh-go
+    tag: test
     target: test
-    tag: ${{CF_BRANCH}}
   perform_tests:
+    title: Perform unit tests
     image: guangie88/codefresh-go:test
     working_directory: ${{main_clone}}
     commands:
