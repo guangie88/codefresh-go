@@ -7,14 +7,14 @@ RUN go mod download
 
 COPY ./ ./
 
-FROM base as tester
+FROM base as test
 RUN go test -v -c
 
-FROM base as builder
+FROM base as build
 RUN go build -v -ldflags "-linkmode external -extldflags -static -s -w"
 
 FROM alpine:3.9 as release
 
 WORKDIR /app
-COPY --from=builder /app/codefresh-go ./
+COPY --from=build /app/codefresh-go ./
 CMD ["./codefresh-go"]
