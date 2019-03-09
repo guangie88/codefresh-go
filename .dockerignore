@@ -1,0 +1,7 @@
+.gitignore
+codefresh-go
+codefresh-go.exe
+LICENSE
+README.md
+Dockerfile
+codefresh*.yml

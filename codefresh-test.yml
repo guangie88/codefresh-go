@@ -1,0 +1,14 @@
+version: '1.0'
+steps:
+  build_image:
+    type: build
+    title: Prepare codefresh-go for testing
+    image-name: ${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
+    tag: test
+    target: test
+  perform_tests:
+    title: Perform unit tests
+    image: ${{build_image}}
+    working_directory: ${{main_clone}}
+    commands:
+    - go test -v ./...
